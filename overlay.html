@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!--
+      Final Release: Ubuntu Desktop 22.04 LTS Installation, Configuration & DISA STIG Compliance Test Overlay
+      Project: WiseTechLTS OBS Overlay
+      Description: This file serves as an OBS Studio overlay and displays the complete, expanded tutorial script for
+      Ubuntu Desktop 22.04 LTS. It includes detailed instructions based on the official Ubuntu documentation,
+      covering installation, post-install setup, enabling Ubuntu Pro, activating USG features, running DISA STIG tests,
+      setting up SSH key-based access, and additional best practices. Developed by WiseTechLTS.
+    -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>
+    Ubuntu Desktop 22.04 LTS Installation &amp; DISA STIG Test – WiseTechLTS
+  </title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <style>
+    /* Global Reset and Base Styles */
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* Main Overlay Container as Flexbox */
+    .overlay-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    /* Header Styling */
+    header {
+      text-align: center;
+      padding: 1rem;
+      background: linear-gradient(to right, #1f497d, #4f81bd);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      flex-shrink: 0;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 0.3rem;
+      color: #fff;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      font-weight: 300;
+      color: #e0e0e0;
+    }
+
+    /* Main Content: Flex grows to take available space */
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    /* Scene Styling */
+    section.overlay-scene {
+      display: none;
+      width: 100%;
+      max-width: 1200px;
+      padding: 1rem;
+      text-align: center;
+      transition: opacity 0.5s ease-in-out;
+      opacity: 0;
+    }
+
+    /* Active Scene - Visible with Smooth Transition */
+    section.overlay-scene.active {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Article Styling */
+    article {
+      background: #ffffff;
+      padding: 1rem;
+      border-radius: 10px;
+      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.05);
+      margin: auto;
+      color: #333;
+    }
+
+    /* Paragraph and List Styling */
+    article p {
+      line-height: 1.6;
+      font-size: 1rem;
+    }
+
+    article ul,
+    article ol {
+      padding-left: 1.2rem;
+      text-align: left;
+      color: #333;
+    }
+
+    article ul li,
+    article ol li {
+      margin-bottom: 0.4rem;
+    }
+
+    /* Footer Navigation */
+    .overlay-nav {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      padding: 0.5rem;
+      flex-shrink: 0;
+      background-color: #e9ecef;
+    }
+
+    .overlay-nav button {
+      font-size: 1rem;
+      padding: 0.5rem 1rem;
+      background: #1f497d;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+
+    .overlay-nav button:hover {
+      background: #15315b;
+    }
+
+    /* Code Block Styling */
+    pre {
+      background-color: #eef2f7;
+      padding: 0.8rem;
+      border-radius: 6px;
+      overflow-x: auto;
+      font-size: 0.9rem;
+      border-left: 4px solid #1f497d;
+      color: #1a1a1a;
+    }
+
+    code {
+      font-family: monospace;
+      color: #1f497d;
+    }
+
+    /* Hide Header When Needed */
+    .hide-header {
+      display: none;
+    }
+
+    /* Responsive Adjustments */
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      header p {
+        font-size: 0.95rem;
+      }
+      article p {
+        font-size: 0.9rem;
+      }
+      .overlay-nav button {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Overlay Container -->
+  <div class="overlay-container">
+    <!-- Header (Visibility controlled per scene) -->
+    <header id="overlay-header">
+      <h1>Ubuntu Desktop 22.04 LTS Tutorial</h1>
+      <h2 class="lead">WiseTechLTS</h2>
+      <p>
+        Follow this step-by-step guide based on official Ubuntu documentation to install, configure,
+        secure, and connect to your Ubuntu Desktop 22.04 system.
+      </p>
+    </header>
+
+    <!-- Main Content (Script Pages) -->
+    <main>
+      <!-- Scene 1: Introduction -->
+      <section id="scene1" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            In this tutorial, we will walk you through the complete process of installing Ubuntu Desktop 22.04 LTS.
+          </p>
+          <p>
+            You will also learn about enabling Ubuntu Pro, activating the Ubuntu Security Guarantee (USG) features,
+            performing a DISA STIG compliance test, and setting up secure SSH key-based access.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 2: Pre-installation Preparation -->
+      <section id="scene2" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Pre-installation Preparation:</strong><br /><br />
+            Ensure your system meets the following minimum requirements (as per Ubuntu 22.04 LTS documentation):
+          </p>
+          <ul>
+            <li>2 GHz dual‑core processor</li>
+            <li>4 GB RAM (8 GB recommended for optimal performance)</li>
+            <li>25 GB free disk space (SSD recommended)</li>
+            <li>Bootable USB drive or DVD</li>
+          </ul>
+          <p>
+            Download the Ubuntu Desktop 22.04 ISO from the official
+            <a href="https://ubuntu.com/download/desktop" target="_blank">Ubuntu website</a>.
+            Verify the ISO's checksum as instructed in the release notes to ensure file integrity.
+            Then, create a bootable USB drive using Rufus (Windows) or Etcher (macOS/Linux).
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 3: Installing Ubuntu Desktop 22.04 -->
+      <section id="scene3" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Installing Ubuntu Desktop 22.04:</strong><br /><br />
+            1. Insert your bootable USB drive and restart your computer.<br />
+            2. Access your BIOS/UEFI settings by pressing F2, F12, DEL, or Esc during startup.<br />
+            3. Change the boot order to prioritize your USB drive, save the settings, and reboot.<br /><br />
+            When the Ubuntu installer loads, choose “Try Ubuntu” to test the live environment or “Install Ubuntu” to
+            begin installation.
+          </p>
+          <ul>
+            <li>Select your preferred language and keyboard layout.</li>
+            <li>Choose your time zone and regional settings.</li>
+            <li>Select “Normal Installation” for a complete setup including documentation and media support.</li>
+            <li>For a clean install, choose “Erase disk and install Ubuntu.” Otherwise, select manual partitioning for dual-boot or custom setups.</li>
+            <li>Create your user account, set your password, and complete the installation process.</li>
+          </ul>
+          <p>
+            For further details, refer to the
+            <a href="https://help.ubuntu.com/22.04/installation-guide/" target="_blank">Ubuntu 22.04 Installation Guide</a>.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 4: Post-installation Initial Setup -->
+      <section id="scene4" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Post-installation Initial Setup:</strong><br /><br />
+            After installation, restart your system and log in with your new account. Open a terminal window
+            (Ctrl+Alt+T) and update your system by running:
+          </p>
+          <pre><code>sudo apt update && sudo apt upgrade -y</code></pre>
+          <p>
+            This ensures your system is updated with the latest security patches and software improvements.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 5: Enabling Ubuntu Pro -->
+      <section id="scene5" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Enabling Ubuntu Pro:</strong><br /><br />
+            Ubuntu Pro extends your system's security with enhanced patches and compliance tools.
+          </p>
+          <ol>
+            <li>
+              Visit <a href="https://ubuntu.com/pro" target="_blank">ubuntu.com/pro</a> and register for a free token.
+            </li>
+            <li>
+              In the terminal, run:
+              <br /><br />
+              <pre><code>sudo pro attach &lt;your-token&gt;</code></pre>
+            </li>
+            <li>
+              Verify activation with:
+              <br /><br />
+              <pre><code>sudo pro status</code></pre>
+            </li>
+          </ol>
+          <p>
+            This process integrates extended security updates into your system.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 6: Enabling USG Features -->
+      <section id="scene6" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Enabling Ubuntu Security Guarantee (USG) Features:</strong><br /><br />
+            With Ubuntu Pro active, your system can utilize USG features for an extra layer of security.
+            Check these services by running:
+          </p>
+          <pre><code>sudo pro status --services</code></pre>
+          <p>
+            Install any additional recommended security packages to meet enterprise-grade protection standards.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 7: Testing the System -->
+      <section id="scene7" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Testing the System:</strong><br /><br />
+            Verify the integrity and performance of your system:
+          </p>
+          <pre><code>sudo systemctl status</code></pre>
+          <p>
+            Additionally, check log files in <code>/var/log</code> for errors and consult the
+            <a href="https://ubuntu.com/security" target="_blank">Ubuntu Security Guide</a> for further hardening recommendations.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 8: Closing Remarks -->
+      <section id="scene8" class="overlay-scene" data-hide-header="false">
+        <article>
+          <p>
+            <strong>Closing:</strong><br /><br />
+            That concludes our comprehensive tutorial on installing Ubuntu Desktop 22.04 LTS and configuring it with
+            Ubuntu Pro and USG features. Your system is now updated, secure, and optimized for performance.
+          </p>
+          <p>
+            Thank you for watching. Please like, subscribe, and leave your feedback. WiseTechLTS is committed to
+            empowering you with the knowledge and tools to excel in today’s digital landscape.
+          </p>
+        </article>
+      </section>
+
+      <!-- Scene 9: DISA STIG Compliance Test -->
+      <section id="scene9" class="overlay-scene" data-hide-header="true">
+        <article>
+          <p>
+            <strong>DISA STIG Compliance Test:</strong><br /><br />
+            To adhere to rigorous security standards, perform a DISA STIG compliance test. The DISA Security Technical
+            Implementation Guide (STIG) provides detailed instructions for system hardening.
+          </p>
+          <p>
+            <em>Follow these steps:</em>
+          </p>
+          <ol>
+            <li>
+              <strong>Install Required Tools:</strong><br />
+              <pre><code>sudo apt install openscap-utils scap-workbench -y</code></pre>
+            </li>
+            <li>
+              <strong>Download the Ubuntu 22.04 STIG Profile:</strong><br />
+              Obtain the latest STIG profile (e.g., <code>ssg-ubuntu2204-ds.xml</code>) from the official DISA website or SCAP Security Guide repository.
+            </li>
+            <li>
+              <strong>Run the Compliance Scan:</strong><br />
+              <pre><code>
+sudo oscap oval eval --results results.xml --report report.html /usr/share/openscap/ssg/content/ssg-ubuntu2204-ds.xml
+              </code></pre>
+            </li>
+            <li>
+              <strong>Review the Report:</strong><br />
+              Open <code>report.html</code> in a browser to review the findings and recommended remediation steps.
+            </li>
+          </ol>
+        </article>
+      </section>
+
+      <!-- Scene 10: SSH Connection Setup Using SSH Keys -->
+      <section id="scene10" class="overlay-scene" data-hide-header="true">
+        <article>
+          <p>
+            <strong>SSH Connection Setup Using SSH Keys:</strong><br /><br />
+            To securely connect between two Ubuntu desktop computers using SSH keys, follow these steps:
+          </p>
+          <p>
+            <strong>Step 1: Install OpenSSH (if not already installed)</strong><br />
+            On both machines, run:
+          </p>
+          <pre><code>sudo apt update && sudo apt install -y openssh-server</code></pre>
+          <p>
+            Check the status of the SSH service:
+          </p>
+          <pre><code>sudo systemctl status ssh</code></pre>
+          <p>
+            If the service is inactive, enable and start it:
+          </p>
+          <pre><code>sudo systemctl enable --now ssh</code></pre>
+          <p>
+            <strong>Step 2: Generate SSH Key on the Client Machine</strong><br />
+            On the client, run:
+          </p>
+          <pre><code>ssh-keygen -t rsa -b 4096</code></pre>
+          <p>
+            Accept the default location (<code>~/.ssh/id_rsa</code>) and optionally set a passphrase.
+          </p>
+          <p>
+            <strong>Step 3: Copy the SSH Public Key to the Server</strong><br />
+            Run:
+          </p>
+          <pre><code>ssh-copy-id user@10.0.0.227</code></pre>
+          <p>
+            (Replace <code>user</code> with your server username.) If <code>ssh-copy-id</code> is unavailable, run:
+          </p>
+          <pre><code>
+cat ~/.ssh/id_rsa.pub | ssh user@10.0.0.227 "mkdir -p ~/.ssh && cat >> ~/.ssh/authorized_keys && chmod 600 ~/.ssh/authorized_keys"
+          </code></pre>
+          <p>
+            <strong>Step 4: Test SSH Login Without Password</strong><br />
+            From the client, run:
+          </p>
+          <pre><code>ssh user@10.0.0.227</code></pre>
+          <p>
+            You should log in without being prompted for a password.
+          </p>
+          <p>
+            <strong>Step 5: (Optional) Disable Password Authentication</strong><br />
+            On the server, edit <code>/etc/ssh/sshd_config</code> to set:
+          </p>
+          <pre><code>
+PasswordAuthentication no
+PubkeyAuthentication yes
+          </code></pre>
+          <p>
+            Then restart SSH:
+          </p>
+          <pre><code>sudo systemctl restart ssh</code></pre>
+          <p>
+            <strong>Step 6: Verify and Troubleshoot</strong><br />
+            If issues occur, check:
+          </p>
+          <pre><code>sudo systemctl status ssh</code></pre>
+          <p>
+            Ensure that <code>~/.ssh</code> has permissions set to 700 and <code>authorized_keys</code> is 600:
+          </p>
+          <pre><code>ls -lah ~/.ssh</code></pre>
+          <p>
+            Allow SSH through the firewall if necessary:
+          </p>
+          <pre><code>
+sudo ufw allow OpenSSH
+sudo ufw enable
+          </code></pre>
+          <p>
+            This completes the SSH key setup process.
+          </p>
+        </article>
+      </section>
+
+      <!-- Optional Final Scene: Page Complete -->
+      <section id="sceneComplete" class="overlay-scene" data-hide-header="true">
+        <article>
+          <p style="font-size: 1.8rem; font-weight: bold;">
+            Page Complete
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <!-- Footer Navigation -->
+    <footer class="overlay-nav">
+      <button class="btn btn-secondary me-2" onclick="prevScene()">
+        <i class="fas fa-arrow-left"></i> Previous
+      </button>
+      <button class="btn btn-secondary" onclick="nextScene()">
+        Next <i class="fas fa-arrow-right"></i>
+      </button>
+    </footer>
+  </div>
+
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Inline JavaScript for Scene Navigation and Header Toggle -->
+  <script>
+    // Retrieve all overlay scenes as a NodeList.
+    const scenes = document.querySelectorAll("section.overlay-scene");
+    // Get the header element.
+    const headerElement = document.getElementById("overlay-header");
+    let currentScene = 0; // Initialize current scene index
+
+    /**
+     * showScene(index)
+     * Displays the scene corresponding to the given index and hides all others.
+     * Also toggles the header's visibility based on the scene's data attribute.
+     *
+     * @param {number} index - The index of the scene to display.
+     */
+    function showScene(index) {
+      if (index < 0 || index >= scenes.length) return;
+      scenes.forEach((scene, i) => {
+        scene.classList.toggle("active", i === index);
+      });
+      currentScene = index;
+      // Toggle header visibility based on scene's data attribute.
+      if (scenes[index].dataset.hideHeader === "true") {
+        headerElement.style.display = "none";
+      } else {
+        headerElement.style.display = "block";
+      }
+    }
+
+    /**
+     * nextScene()
+     * Advances to the next scene, if available.
+     */
+    function nextScene() {
+      if (currentScene < scenes.length - 1) {
+        showScene(currentScene + 1);
+      }
+    }
+
+    /**
+     * prevScene()
+     * Returns to the previous scene, if available.
+     */
+    function prevScene() {
+      if (currentScene > 0) {
+        showScene(currentScene - 1);
+      }
+    }
+
+    // Enable keyboard navigation using left/right arrow keys.
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") {
+        nextScene();
+      } else if (event.key === "ArrowLeft") {
+        prevScene();
+      }
+    });
+
+    // Initialize the first scene when the DOM content is loaded.
+    document.addEventListener("DOMContentLoaded", () => {
+      showScene(0);
+    });
+  </script>
+  <!-- End of File Comments:
+         This is the final, comprehensive OBS Studio overlay file for the Ubuntu Desktop 22.04 LTS tutorial,
+         including installation, configuration, DISA STIG compliance testing, and SSH key setup.
+         The page is fully responsive and handles content flexibly to fit the viewport.
+         Developed by WiseTechLTS.
+    -->
+</body>
+</html>

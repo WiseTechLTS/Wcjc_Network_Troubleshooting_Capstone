@@ -1,0 +1,45 @@
+/* overlay.css */
+
+/* Ensure a transparent background for OBS */
+html,
+body {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    overflow: hidden;
+}
+
+/* Container for the overlay */
+#overlay-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Each overlay scene is positioned absolutely; only the active one is displayed */
+.overlay-scene {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    padding: 1rem;
+}
+
+/* Show only the active scene */
+.overlay-scene.active {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Navigation controls positioned at the bottom center */
+#overlay-navigation {
+    position: absolute;
+    bottom: 1rem;
+    left: 50%;
+    transform: translateX(-50%);
+}

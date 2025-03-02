@@ -1,0 +1,54 @@
+/* styles.css */
+
+/* Base Styles */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  }
+  
+  /* Header & Navigation */
+  .navbar-brand {
+    font-weight: bold;
+    font-size: 1.5rem;
+  }
+  .nav-link {
+    font-size: 1rem;
+  }
+  header {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Section Styles */
+  section {
+    padding: 2rem 0;
+  }
+  
+  /* Article Text */
+  article p {
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Footer Styles */
+  footer {
+    font-size: 0.9rem;
+    box-shadow: 0 -2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Custom Button Styles */
+  .btn-primary {
+    transition: transform 0.2s;
+  }
+  .btn-primary:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Ensure full viewport height */
+  .vh-100 {
+    min-height: 100vh;
+  }
+  
+  /* Additional custom refinements */
+  .animate__animated {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  }
+  

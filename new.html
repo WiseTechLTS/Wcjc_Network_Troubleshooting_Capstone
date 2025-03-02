@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ubuntu Desktop 22.04 Tutorial Script</title>
+  <!-- Bootstrap 5 CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- FontAwesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" />
+  <style>
+    /* Global Styles */
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #111;
+      color: #fff;
+      overflow: hidden;
+      height: 100%;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    /* Container for the overlay */
+    .overlay-container {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+    }
+    /* Semantic sections for each script page */
+    section.overlay-scene {
+      display: none;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    /* Only the active scene is visible */
+    section.overlay-scene.active {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    /* Header styling */
+    header {
+      text-align: center;
+      padding: 1rem 0;
+    }
+    header h1 {
+      font-size: 2rem;
+      font-weight: bold;
+    }
+    /* Footer Navigation */
+    footer.overlay-nav {
+      position: absolute;
+      bottom: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+<body>
+  <div class="overlay-container">
+    <header>
+      <h1>Ubuntu Desktop 22.04 Installation &amp; Configuration Tutorial</h1>
+      <p class="lead">WiseTechLTS</p>
+    </header>
+    <main>
+      <!-- Scene 1: Introduction -->
+      <section id="scene1" class="overlay-scene active">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Introduction:</strong><br>
+            Welcome to WiseTechLTS. In today’s tutorial, we’ll guide you through installing Ubuntu Desktop 22.04 and walk you through the post‑install configuration steps—including enabling Ubuntu Pro, activating the Ubuntu Security Guarantee (USG) features, and testing your system for optimal performance.
+          </p>
+        </article>
+      </section>
+      <!-- Scene 2: Pre-installation Preparation -->
+      <section id="scene2" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Pre-installation Preparation:</strong><br>
+            Before we begin, ensure your hardware meets the minimum requirements:
+            <br>• 2 GHz dual‑core processor<br>• 4 GB RAM<br>• 25 GB free disk space<br>• Bootable USB or DVD<br>
+            Download the Ubuntu Desktop 22.04 ISO from the official website and create a bootable USB drive using a trusted tool such as Rufus or Etcher.
+          </p>
+        </article>
+      </section>
+      <!-- Scene 3: Installing Ubuntu Desktop 22.04 -->
+      <section id="scene3" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Installing Ubuntu Desktop 22.04:</strong><br>
+            Insert your bootable USB drive and restart your computer. Access your BIOS/UEFI settings (typically by pressing F2, F12, or DEL) and set the USB drive as the primary boot device. Once the Ubuntu welcome screen appears, select “Try Ubuntu” or “Install Ubuntu.” Choose your language, keyboard layout, time zone, and opt for “Normal Installation.” For a clean setup, select “Erase disk and install Ubuntu” (or use manual partitioning if you prefer advanced configurations). Follow the prompts to create your user account and complete the installation.
+          </p>
+        </article>
+      </section>
+      <!-- Scene 4: Post-installation Initial Setup -->
+      <section id="scene4" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Post-installation Initial Setup:</strong><br>
+            After installation, restart your system and log in. Open a terminal (Ctrl+Alt+T) and update your package repositories by running:
+            <br><code>sudo apt update && sudo apt upgrade -y</code>
+            <br>This ensures your system has the latest updates and security patches.
+          </p>
+        </article>
+      </section>
+      <!-- Scene 5: Enabling Ubuntu Pro -->
+      <section id="scene5" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Enabling Ubuntu Pro:</strong><br>
+            Enhance your system’s security by enabling Ubuntu Pro. Visit <a href="https://ubuntu.com/pro" target="_blank" class="text-info">ubuntu.com/pro</a> to register and obtain a free token. In the terminal, execute:
+            <br><code>sudo pro attach &lt;your-token&gt;</code>
+            <br>Then verify the activation by running:
+            <br><code>sudo pro status</code>
+          </p>
+        </article>
+      </section>
+      <!-- Scene 6: Enabling USG Features -->
+      <section id="scene6" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Enabling USG Features:</strong><br>
+            With Ubuntu Pro active, confirm that the Ubuntu Security Guarantee (USG) features are enabled. Run:
+            <br><code>sudo pro status --services</code>
+            <br>If prompted, install any additional security packages to ensure your system meets enterprise-level security standards.
+          </p>
+        </article>
+      </section>
+      <!-- Scene 7: Testing the System -->
+      <section id="scene7" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Testing the System:</strong><br>
+            Test your system’s stability and security by validating the integrity of installed packages and checking security logs. Run:
+            <br><code>sudo systemctl status</code>
+            <br>to verify that all essential services are running correctly. For further hardening, refer to the Ubuntu Security Guide.
+          </p>
+        </article>
+      </section>
+      <!-- Scene 8: Closing -->
+      <section id="scene8" class="overlay-scene">
+        <article>
+          <p class="fs-4 text-center">
+            <strong>Closing:</strong><br>
+            That concludes our tutorial on installing Ubuntu Desktop 22.04 and configuring Ubuntu Pro with USG features. Thank you for watching. Please like, subscribe, and leave your comments below. At WiseTechLTS, we empower you with the tools and knowledge to excel in the digital age.
+          </p>
+        </article>
+      </section>
+    </main>
+    <footer class="overlay-nav">
+      <button class="btn btn-secondary me-2" onclick="prevScene()">
+        <i class="fas fa-arrow-left"></i> Previous
+      </button>
+      <button class="btn btn-secondary" onclick="nextScene()">
+        Next <i class="fas fa-arrow-right"></i>
+      </button>
+    </footer>
+  </div>
+  <!-- Bootstrap 5 JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Inline Script for Navigation -->
+  <script>
+    // Select all script pages (scenes)
+    const scenes = document.querySelectorAll("section.overlay-scene");
+    let currentScene = 0;
+
+    // Function to show a specific scene by index
+    function showScene(index) {
+      if (index < 0 || index >= scenes.length) return;
+      scenes.forEach((scene, i) => {
+        scene.classList.toggle("active", i === index);
+      });
+      currentScene = index;
+    }
+
+    // Navigate to the next scene
+    function nextScene() {
+      if (currentScene < scenes.length - 1) {
+        showScene(currentScene + 1);
+      }
+    }
+
+    // Navigate to the previous scene
+    function prevScene() {
+      if (currentScene > 0) {
+        showScene(currentScene - 1);
+      }
+    }
+  </script>
+</body>
+</html>
